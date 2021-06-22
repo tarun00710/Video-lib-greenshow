@@ -27,6 +27,7 @@ body {
 :root {
   --font-style1: Quicksand;
   --primary-color: #0972e2;
+  --primary-alternate-color:#28A745;
 }
 /*avatar*/
 .avatar {
@@ -722,7 +723,7 @@ hr {
 small{
   padding-right:0.8rem;
   color:rgba(133, 133, 133, 0.856);
-  margin-top: 0.8rem;
+  margin-top: 0.2rem;
 }
 .videos{
   display: grid;
@@ -742,10 +743,28 @@ small{
 }
 .video_description{
   font-size:0.9rem;
-  margin-top: 0.5rem;
+  margin-top: 0.2rem;
 }
 
 .navlink{
   text-decoration: none;
+}
+.navstyle{
+  text-decoration: none;
   color:white;
+}
+.playlist-title{
+  color:var(--primary-alternate-color);
+  margin:1rem;
+}
+.playlist-item{
+  width: 70%;
+  background-color: #a8f0c6;
+  padding: 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 0 14px 3px #b7e2c9;
+  margin: 3rem auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

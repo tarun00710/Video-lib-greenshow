@@ -1,0 +1,51 @@
+.modal {
+    font-size: 12px;
+    width: 80%;
+    background-color: rgb(233, 233, 233);
+  }
+  .modal > .header {
+    width: 100%;
+    border-bottom: 1px solid rgb(35, 199, 20);
+    font-size: 20px;
+    text-align: center;
+    padding: 4px;
+    color:#057232
+  }
+  .modal > .content {
+    width: 100%;
+    padding: 10px 5px;
+  }
+  .modal > .actions {
+    width: 100%;
+    padding: 10px 5px;
+    margin: auto;
+    text-align: center;
+  }
+  .modal > .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    color:rgb(7, 189, 7);
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+  }
+.modal-input{
+  border:1px solid rgb(199, 199, 199);
+  padding:0.5rem;
+  outline:none !important
+}
+.playlist-name{
+  background-color: #a8f0c6;
+  padding: 0.3rem;
+  border-radius: 4px;
+  margin:0.5rem;
+  font-size:13px;
+  font-weight:600;
+  cursor: pointer;
+}

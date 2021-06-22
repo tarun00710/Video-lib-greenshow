@@ -10,21 +10,21 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
         <i className="fa fa-times" aria-hidden="true"></i>
         <ul className="nav-list sidebarMenu">
           <li className="nav-menu-items">
-            <NavLink className="navlink" to="/signup" >
+            <NavLink className="navstyle" to="/signup" >
               SignUp/LogIn<i class="fa fa-user" aria-hidden="true"></i>
             </NavLink>
             <hr />
           </li>
 
           <li className="nav-menu-items">
-          <NavLink className="navlink" to="/likedVideos"  >
+          <NavLink className="navstyle" to="/likedVideos"  >
             Liked Videos<i class="fa fa-heart" aria-hidden="true"></i>
           </NavLink>
             <hr />
           </li>
 
           <li className="nav-menu-items">
-          <NavLink className="navlink" to="/playlists" >
+          <NavLink className="navstyle" to="/playlists" >
             Playlists
              <i class="fa fa-step-forward" aria-hidden="true"></i>
           </NavLink>

@@ -3,7 +3,7 @@ import React,{useContext,createContext,useReducer} from 'react';
 const CategoryContext=createContext();
 
 const categoryReducer=(state,action)=>{
-    console.log(action.type);
+    
     switch(action.type){
         case "BASICS":
             return {...state,category:"Gardening Basics"}
