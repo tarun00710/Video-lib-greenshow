@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { usePlayLikeContext } from '../Context/PlaylistLikeContext';
+import {RemoveLikedVideoHandler} from '../Components/Predispatch'
+import {SignInContext } from '../Context/SignInContext';
+
 
 const Likedvideos=()=>{
+
     const {state,dispatch}=usePlayLikeContext();
+    const {userData} = useContext(SignInContext)
+    console.log(userData)
+
     return (
-        <div>
-      <p>Your Favourite Videos:</p>
+
+      <div>
+
+      <h3 className="playlist-title">Your Favourite Videos:</h3>
       {state.addToLikedVideos.map((video) => {
-          const {avatar,title,views,duration,channel,v_id}=video;
+          const {avatar,title,views,duration,channel,_id}=video;
+
         return (
           <>
-            <div id={v_id} class="horizontal-card card-dismiss">
+            <div id={_id} class="horizontal-card card-dismiss">
               <div 
-                onClick={() =>
-                  dispatch({ type: "REMOVE_PLAYLIST", payload: v_id })
-                }
+                onClick={() => RemoveLikedVideoHandler(_id,dispatch,userData)}
               >
                 <i style={{color:"red"}} className="fas fa-times dismiss"></i>
               </div>

@@ -2,17 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
 import App from './App';
-import CategoryFunction from './Components/CategoryContext';
+import CategoryFunction from './Context/CategoryContext';
 import PlaylistLikeContextFunc from './Context/PlaylistLikeContext';
+import SignInContextProv from './Context/SignInContext';
+import VideoContext from './Context/VideoContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-    <CategoryFunction>
-    <PlaylistLikeContextFunc>
-      <App />
-    </PlaylistLikeContextFunc>
-    </CategoryFunction> 
+    <SignInContextProv>
+    <VideoContext>
+          <CategoryFunction>
+            <PlaylistLikeContextFunc>
+              <App />
+            </PlaylistLikeContextFunc>
+          </CategoryFunction> 
+    </VideoContext>
+    </SignInContextProv>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

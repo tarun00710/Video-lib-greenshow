@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { useCategory } from './CategoryContext';
+import React, { useContext} from 'react';
+import { useCategory } from '../Context/CategoryContext';
+import {VideoDBContext} from '../Context/VideoContext';
 import VideoList from "./VideoList";
-// import axios from 'axios';
 
-const VideoCategory=()=>{
-    const [VideoDB,setVideoDB]=useState([]);
-    useEffect(() => {
-        const getdatalist = async () => {
-          const res = await fetch("http://localhost:5000/category", {
-            method: "GET",
-            headers: {
-              "Content-type": "application/json"
-            }
-          });
-          const datalist = await res.json();
-          setVideoDB(datalist.Videos)
-          console.log(datalist)
-        };
-        getdatalist();
-      }, []);
+const VideoCategory = () => {
+
+    // const [VideoDB,setVideoDB]=useState([]);
+
+    // useEffect(() => {
+    //     const getdatalist = async () => {
+    //       const res = await axios.get("https://green-play-library.herokuapp.com/category")
+    //       console.log(res)
+    //       const datalist = await res.data;
+    //       setVideoDB(datalist.Videos)
+    //       console.log(datalist)
+    //     };
+    //     getdatalist();
+    //   }, []);
+    const {VideoDB} = useContext(VideoDBContext)
+   
     const {state}= useCategory();
 
     const filterCategoryFunction=(category) => {
@@ -34,8 +34,7 @@ const VideoCategory=()=>{
        
     }
     const filterCategory=filterCategoryFunction(state.category);
-    console.log(filterCategory);
-    console.log(VideoDB);
+  
     return(
         <>
             <div className="videos">

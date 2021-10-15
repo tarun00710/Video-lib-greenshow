@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 const SignUser = () => {
   const [user, setUser] = useState({
@@ -18,27 +19,21 @@ const SignUser = () => {
       setUser({ ...user, confirmpassword: value });
   };
 
-//   const postData = async (e) => {
-//     e.preventDefault();
-//     const res = await fetch("http://localhost:3000/registration", {
-//       method: "POST",
-//       headers: {
-//         "Content-type": "application/json"
-//       },
-//       body: JSON.stringify({ name, email, password, confirmpassword })
-//     });
+  const postData = async (e) => {
+    e.preventDefault();
 
-//     const data = await res.json();
-//     console.log(data.status);
-//     if (data.status === 422 || !data) {
-//       window.alert("Invalid registration");
-//       console.log("Invalid registration");
-//     } else {
-//       window.alert("successful registration");
-//       console.log("successful registration");
-//       setUser({ name: "", email: "", password: "", confirmpassword: "" });
-//     }
-//   };
+    const res = await axios.post('http://localhost:5000/user',{ name, email, password, confirmpassword })
+    console.log(res) 
+
+    if (res.status === 422 || !res.data) {
+      window.alert("Invalid registration");
+      console.log("Invalid registration");
+    } else {
+      window.alert("successful registration");
+      console.log("successful registration");
+      setUser({ name: "", email: "", password: "", confirmpassword: "" });
+    }
+  };
 
   const { name, email, password, confirmpassword } = user;
 
@@ -94,7 +89,7 @@ const SignUser = () => {
           />
         </div>
         <div class="form-input">
-          <input  type="submit" class="input" />
+          <input onClick={(e) => postData(e) }  type="submit" class="input" />
         </div>
         <div class="form-input">
           <small>Already Registered?</small>

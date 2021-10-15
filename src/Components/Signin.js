@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState , useContext } from "react";
 import { Link } from "react-router-dom";
-// import { SignInContext } from "../Context/SignInContext";
+import {SignInContext} from "../Context/SignInContext"
 
 const LogInUserfunc = () => {
   const [userCheck, setuserCheck] = useState({ email: "", password: "" });
@@ -11,7 +11,9 @@ const LogInUserfunc = () => {
     if (name === "password") setuserCheck({ ...userCheck, password: value });
   };
   const { email, password } = userCheck;
-//   const { logIn } = useContext(SignInContext);
+  const {login} = useContext(SignInContext);
+
+
   return (
     <>
       <form className="form" method="#">
@@ -44,7 +46,7 @@ const LogInUserfunc = () => {
         </div>
         <div className="form-input">
           <input
-            
+            onClick={(e)=>login(e,email,password,setuserCheck)} 
             type="submit"
             className="input"
           />

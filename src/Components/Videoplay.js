@@ -1,24 +1,33 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { useParams } from 'react-router';
-import {VideoDB} from "./VideoDB";
 import ReactPlayer from 'react-player';
 import {usePlayLikeContext} from "../Context/PlaylistLikeContext";
 import PlaylistModal from './PlaylistModal';
+import { VideoDBContext } from '../Context/VideoContext';
+import { addToLikedVideo } from './Predispatch';
+import { SignInContext } from '../Context/SignInContext';
 
-const Videoplay =()=>{
+const Videoplay = () => {
+
     const {v_id} = useParams();
-    const videoURL=`https://www.youtube.com/watch?v=${v_id}`;
+    const videoURL = `https://www.youtube.com/watch?v=${v_id}`;
     
-    const {dispatch}=usePlayLikeContext();
-    const findVideo=VideoDB.find((product)=>product.v_id === v_id)
-    const {title,views,likes,dislikes,duration,description,subscriber,channel,postedOn}=findVideo;
+    const {VideoDB} = useContext(VideoDBContext);    
+    const {dispatch} = usePlayLikeContext();
+    const {userData} = useContext(SignInContext);
+    
+
+    const findVideo =  VideoDB.find((product) => product.v_id === v_id)
+    console.log(findVideo ,"I am the video")
+    const {title,views,likes,dislikes,duration,description,subscriber,channel,postedOn} = findVideo;
+    
     return (
         <div className="videoplayer">
             <div className="video_section">
-            <ReactPlayer controls width="100%" height="100%" url={videoURL} />
+                <ReactPlayer controls width="100%" height="100%" url={videoURL} />
             </div>
             <div class="videotitle">
-            {title}
+               {title}
             </div>
             <div className="video_detail">
                 <small>{channel} {subscriber}-subscribers</small>
@@ -29,13 +38,14 @@ const Videoplay =()=>{
             <div className="video_detail">
                 <small><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{likes}</small>
                 <small><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>{dislikes}</small>
-                <small onClick={()=>dispatch({type:"ADD_TO_LIKE",payload:findVideo})}>Add to Liked Video <i class="fa fa-heart-o" aria-hidden="true"></i></small>
+                <small onClick={() => addToLikedVideo(findVideo,dispatch,userData)}>Add to Liked Video <i class="fa fa-heart-o" aria-hidden="true"></i></small>
                 <PlaylistModal  videoInfo={findVideo}/> <i class="fa fa-play-circle" aria-hidden="true"></i>
             </div> 
             <div className="video_description">
                 <h4>Description:</h4>
                     {description}
             </div>
+           
             
         </div>    
     )

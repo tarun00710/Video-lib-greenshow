@@ -1,36 +1,46 @@
+import React,{useContext} from 'react';
 import ReactPlayer from 'react-player';
 import { useParams } from 'react-router-dom';
 import {usePlayLikeContext} from "../Context/PlaylistLikeContext";
+import {removeVideoFromPlaylist} from "./Predispatch"
+import { SignInContext} from '../Context/SignInContext';
 
-const PlaylistVideos=()=>{
 
-    const {state}=usePlayLikeContext()
-    const {addToPlaylist}=state
-    const {playlistName}=useParams();
+const PlaylistVideos = () => {
 
-    const playlistInfo=addToPlaylist.find((item)=>item.playlistName===playlistName)
-    console.log(playlistInfo)
-    const {playlistVideos}=playlistInfo
+    const {state,dispatch} = usePlayLikeContext()
+    const {addToPlaylist} = state
+    const {playlistName} = useParams();
+    // const {userData} = useSignIn()
+    const {userData} = useContext(SignInContext)
+
+    const playlistInfo=addToPlaylist?.find((item) => item.playlistName === playlistName)
+
+
+    const {playlistVideos} = playlistInfo
+
     
     return (
-        <>
-            { playlistVideos.map((video) => {
-                const {title,v_id,channel,subscriber,views,postedOn,duration}=video
+        <> 
+            { playlistVideos?.map((video) => {
+                const {_id,title,v_id,channel,subscriber,views,postedOn,duration}=video
             return(
-                <div className="videoplayer">
-                    <div className="video_section">
+                <div className="playlist-video">
+                    <div className="playlist-video-content ">
+                        <i onClick={ () => removeVideoFromPlaylist(userData, playlistName,_id,dispatch) } class="fa fa-window-close" aria-hidden="true"></i>
                         <ReactPlayer controls width="100%" height="100%" url={`https://www.youtube.com/watch?v=${v_id}`} />
                     </div>
-                    <div class="videotitle">
+                    <div class="playlist-video-title">
                         {title}
                     </div>
-                    <div className="video_detail">
+                    <div className="playlist-video_detail">
                         <small>{channel} {subscriber}-subscribers</small>
                         <small>{views} <i class="fa fa-eye" aria-hidden="true"></i></small>
                         <small><i class="fa fa-calendar-o" aria-hidden="true"></i> {postedOn}</small>
-                        <small><i class="fa fa-clock-o" aria-hidden="true"></i>{duration}</small>
+                        <small><i class="fa fa-clock-o" aria-hidden="true"></i>{duration}</small> 
                     </div>
-            </div>)
+                </div>
+                )
             })}
         </>
         

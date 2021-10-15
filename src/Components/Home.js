@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import {useCategory} from "./CategoryContext";
+import {useCategory} from "../Context/CategoryContext";
 import img1 from '../Assets/img1.jpg';
 import img2 from '../Assets/img2.jpg';
 import img3 from '../Assets/img3.jpg';

@@ -11,6 +11,9 @@ import Signin from './Components/Signin';
 import {Routes, Route} from "react-router-dom"
 import VideoCategory from './Components/VideoCategory';
 import Sidebar from './Components/Sidebar';
+import PrivateRoute from './Auth/PrivateRoute';
+
+
 function App() {
   const [sidebar,setSidebar] =useState(false);
   const handleSidebar = () => setSidebar((sidebar) => !sidebar);
@@ -25,8 +28,8 @@ function App() {
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/signin" element={<Signin/>}/>
       <Route path="/video/:v_id" element={<Videoplay/>}/>
-      <Route path="/likedvideos" element={<Likedvideos/>}/>
-      <Route path="/playlists" element={<Playlists/>}/>
+      <PrivateRoute path="/likedvideos" element={<Likedvideos/>}/>
+      <PrivateRoute path="/playlists" element={<Playlists/>}/>
       <Route path="/playlists/:playlistName" element={<PlaylistVideos/>}/>
     </Routes>
     </div>
