@@ -27,7 +27,7 @@ body {
 :root {
   --font-style1: Quicksand;
   --primary-color: #0972e2;
-  --primary-alternate-color:#28A745;
+  --primary-alternate-color:#28a745;
 }
 /*avatar*/
 .avatar {
@@ -168,7 +168,7 @@ body {
 
 
 .btn-primary {
-  background-color: var(--primary-color);
+  background-color: var(--primary-alternate-color);
 }
 .btn-secondary {
   background-color: #5a6268;
@@ -225,15 +225,16 @@ body {
 .horizontal-card {
   display: flex;
   align-items: center;
-  border: 1px solid rgb(233, 233, 233);
-  margin-top: 1rem;
+  border: 1px solid rgb(241, 239, 239);
+  margin-top: 2rem;
 }
-.card-info {
+.card-info{
   display: flex;
+  margin-left:0.5rem;
   flex-direction: column;
   justify-content: space-between;
 }
-.card-description {
+/* .card-description {
   display: flex;
   flex-direction: column;
 }
@@ -248,14 +249,49 @@ body {
 .card-button-option {
   display: flex;
   flex-wrap: wrap;
+} */
+.card-description {
+  display: flex;
+  flex-direction: column;
+}
+.card-description > p {
+  font-size: 0.9rem;
+  padding:0.4rem;
+}
+.card-description > span {
+  font-size: 0.7rem;
+  padding: 12px 0 12px 0;
+  margin-right: 2rem;
+}
+
+.card-button-option {
+  display: flex;
+  flex-wrap: wrap;
+  
 }
 .hcard-image {
+  height: 150px;
+  width: auto;
+  max-width: 200px;
+  object-fit: cover;
+}
+/* .hcard-image {
   width: 180px;
   height: auto;
-}
+} */
 
 .card-dismiss {
   position: relative;
+}
+
+
+.fa-trash{
+  position: absolute;
+  font-size: 1.1rem;
+  color: rgb(245, 116, 116);
+  top: 3px;
+  cursor:pointer;
+  right: 10px;
 }
 .dismiss {
   position: absolute;
@@ -334,12 +370,12 @@ body {
   margin: auto;
 }
 .input:focus {
-  border-color: rgb(88, 171, 255);
-  box-shadow: 0 0 5px 0 rgb(64, 159, 253);
+  border-color:#4BEC68;
+  box-shadow: 0 0 5px 0 #4BEC68;
 }
 
 .form-header {
-  color: rgb(88, 171, 255);
+  color:var(--primary-alternate-color);
   margin-bottom: 1rem;
 }
 .form {
@@ -462,9 +498,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(27, 27, 27, 0.918);
+  background-color: rgb(58, 58, 58);
   font-size: 1rem;
-  color: white;
+  color: rgba(231, 231, 231, 0.973);
   font-weight: 800;
   padding: 0.5rem;
   overflow: hidden;
@@ -560,7 +596,7 @@ body {
 }
 .grid-2 {
   display: grid;
-  grid-gap:10px;
+  grid-gap:12px;
   grid-template-columns: 2fr 1fr;
   align-items: center;
   justify-content: space-between;
@@ -577,12 +613,18 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
+.flex-in-grid > h4{
+  margin-top: 1rem;
+  color: #506D84;
+}
+
+
+
+
 /*Grid vertical cards*/
 .grid-vertical-card {
-  /* display: grid;
-    grid-template-columns:repeat(auto-fit,minmax(186px,1fr)); */
+  
   margin: 2rem auto 1rem auto;
   grid-gap: 1rem;
   width: 80%;
@@ -729,6 +771,9 @@ small{
   display: grid;
   grid-gap:2rem;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.video-box > p{
+  font-size : 0.9rem;
 }
 .videoplayer{
   display:flex;

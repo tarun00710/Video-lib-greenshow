@@ -2,13 +2,16 @@ import React, { useContext } from 'react';
 import { usePlayLikeContext } from '../Context/PlaylistLikeContext';
 import {RemoveLikedVideoHandler} from '../Components/Predispatch'
 import {SignInContext } from '../Context/SignInContext';
-
+import PlaylistModal from './PlaylistModal';
 
 const Likedvideos=()=>{
 
     const {state,dispatch}=usePlayLikeContext();
     const {userData} = useContext(SignInContext)
     console.log(userData)
+    //() => dispatch({ type: "ADD_TO_PLAYLIST", payload: video })
+   
+                  
 
     return (
 
@@ -24,7 +27,7 @@ const Likedvideos=()=>{
               <div 
                 onClick={() => RemoveLikedVideoHandler(_id,dispatch,userData)}
               >
-                <i style={{color:"red"}} className="fas fa-times dismiss"></i>
+              <i className="fa fa-trash"></i>
               </div>
               <img class="hcard-image" src={avatar} alt="img" />
               <div class="card-info">
@@ -35,11 +38,9 @@ const Likedvideos=()=>{
                   <p> {channel}</p>
                 </div>
                 <div class="card-button-option">
-                  <button  onClick={() =>
-                    dispatch({ type: "ADD_TO_PLAYLIST", payload: video })
-                  } type="button" class="btn btn-outline">
-                    Move to Playlist
-                  </button>
+            
+                    <PlaylistModal videoInfo={_id}/>
+      
                 </div>
               </div>
             </div>

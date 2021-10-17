@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 
 const Nav=({handleSidebar})=>{
     const linkStyle = { color: "white", textDecoration: "none" };
-    const activeStyle = { color: "#4BEC68" };
+    const activeStyle = { color: "#33AB55" };
     return (
         <>
             <div className="Nav-section">

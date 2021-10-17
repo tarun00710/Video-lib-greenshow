@@ -5,9 +5,12 @@ const VideoList=({videodata})=>{
 
     const {avatar,title,views,duration,channel,v_id}=videodata;
 
+    const linkStyle = {color:"#506D84"};
+
+
     return( 
         <>
-        <Link className="navlink" to={`/video/${v_id}`}>
+        <Link style={linkStyle} className="navlink" to={`/video/${v_id}`}>
           <div className="video-box">
               <img src={avatar} alt="img"/>
               <p>{title}</p>
