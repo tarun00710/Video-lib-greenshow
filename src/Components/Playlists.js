@@ -8,11 +8,11 @@ import { SignInContext } from '../Context/SignInContext';
 
 const Playlists = () => {
 
-const {userData} = useContext(SignInContext)
-const {state , dispatch} = usePlayLikeContext();
-const {addToPlaylist}=state;
+    const {userData} = useContext(SignInContext)
+    const {state , dispatch} = usePlayLikeContext();
+    const {addToPlaylist}=state;
 
-console.log(addToPlaylist)
+
     return (
                           
             <div class="playlist-section">

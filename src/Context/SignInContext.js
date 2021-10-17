@@ -21,8 +21,6 @@ const login = async(e,email, password,setUserCheck) =>{
       
         if(response.status === 200){
             setUserData(response.data.users)
-            console.log(userData,"checkuserdata")
-            console.log(response.data)
         }
         if(response.status === 422 || !userData){
             alert('Invalid login')

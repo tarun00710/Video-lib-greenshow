@@ -1,7 +1,7 @@
 .modal {
     font-size: 12px;
     width: 80%;
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(51, 51, 51);
   }
   .modal > .header {
     width: 100%;
@@ -9,7 +9,7 @@
     font-size: 20px;
     text-align: center;
     padding: 4px;
-    color:#057232
+    color:#55ee95
   }
   .modal > .content {
     width: 100%;
@@ -29,11 +29,11 @@
     line-height: 20px;
     right: -10px;
     top: -10px;
-    color:rgb(7, 189, 7);
+    color:rgb(3, 102, 3);
     font-size: 24px;
-    background: #ffffff;
+    background: #83fab9;
     border-radius: 18px;
-    border: 1px solid #cfcece;
+    border: 1px solid #1d9904;
   }
 .modal-input{
   border:1px solid rgb(199, 199, 199);

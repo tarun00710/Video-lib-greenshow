@@ -9,16 +9,13 @@ const Likedvideos=()=>{
     const {state,dispatch}=usePlayLikeContext();
     const {userData} = useContext(SignInContext)
     console.log(userData)
-    //() => dispatch({ type: "ADD_TO_PLAYLIST", payload: video })
-   
                   
-
     return (
 
       <div>
 
       <h3 className="playlist-title">Your Favourite Videos:</h3>
-      {state.addToLikedVideos.map((video) => {
+      {state?.addToLikedVideos.map((video) => {
           const {avatar,title,views,duration,channel,_id}=video;
 
         return (
@@ -32,7 +29,7 @@ const Likedvideos=()=>{
               <img class="hcard-image" src={avatar} alt="img" />
               <div class="card-info">
                 <div class="card-description">
-                  <h3>{title}</h3>
+                  <h4 style={{ color: "#868686"}}>{title}</h4>
                   <p> {views} views</p>
                   <p> {duration} mins </p>
                   <p> {channel}</p>

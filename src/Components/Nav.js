@@ -14,7 +14,7 @@ const Nav=({handleSidebar})=>{
                     <i  class="fa fa-search" aria-hidden="true"></i>
                 </div>   
                 <ul class="nav-list">
-                <li><NavLink to="/signup" style={linkStyle} activeStyle={activeStyle}>SignUp/LogIn<i class="fa fa-heart" aria-hidden="true"></i></NavLink></li>               
+                    <li><NavLink to="/signup" style={linkStyle} activeStyle={activeStyle}>SignUp/LogIn<i class="fa fa-heart" aria-hidden="true"></i></NavLink></li>               
                     <li><NavLink to="/likedVideos" style={linkStyle} activeStyle={activeStyle}>Liked Videos<i class="fa fa-heart" aria-hidden="true"></i></NavLink></li>
                     <li><NavLink to="/playlists" style={linkStyle} activeStyle={activeStyle}>Playlists<i class="fa fa-step-forward" aria-hidden="true"></i></NavLink></li>
                 </ul>

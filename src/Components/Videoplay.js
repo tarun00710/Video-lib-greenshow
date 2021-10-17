@@ -1,5 +1,6 @@
 import React,{useContext} from 'react';
 import { useParams } from 'react-router';
+import {useNavigate} from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import {usePlayLikeContext} from "../Context/PlaylistLikeContext";
 import PlaylistModal from './PlaylistModal';
@@ -11,14 +12,14 @@ const Videoplay = () => {
 
     const {v_id} = useParams();
     const videoURL = `https://www.youtube.com/watch?v=${v_id}`;
-    
+    const navigate = useNavigate();
     const {VideoDB} = useContext(VideoDBContext);    
     const {dispatch} = usePlayLikeContext();
-    const {userData} = useContext(SignInContext);
+    const {userData , loggedIn} = useContext(SignInContext);
     
 
     const findVideo =  VideoDB.find((product) => product.v_id === v_id)
-    console.log(findVideo ,"I am the video")
+
     const {title,views,likes,dislikes,duration,description,subscriber,channel,postedOn} = findVideo;
     
     return (
@@ -32,14 +33,14 @@ const Videoplay = () => {
             <div className="video_detail">
                 <small>{channel} {subscriber}-subscribers</small>
                 <small>{views} <i class="fa fa-eye" aria-hidden="true"></i></small>
-                <small><i class="fa fa-calendar-o" aria-hidden="true"></i> {postedOn}</small>
+                <small> <i class="fa fa-calendar-o" aria-hidden="true"></i> {postedOn}</small>
                 <small><i class="fa fa-clock-o" aria-hidden="true"></i>{duration}</small>
             </div>
             <div className="video_detail">
                 <small><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{likes}</small>
                 <small><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>{dislikes}</small>
-                <small onClick={() => addToLikedVideo(findVideo,dispatch,userData)}>Add to Liked Video <i class="fa fa-heart-o" aria-hidden="true"></i></small>
-                <PlaylistModal  videoInfo={findVideo}/> <i class="fa fa-play-circle" aria-hidden="true"></i>
+                <small onClick={() => loggedIn ? addToLikedVideo(findVideo,dispatch,userData) : navigate("/signin") }> Add to Liked Video <i class="fa fa-heart-o" aria-hidden="true"></i></small>
+                {loggedIn ? <PlaylistModal  videoInfo={findVideo}/> : navigate("/signin")} <i class="fa fa-play-circle" aria-hidden="true"></i>
             </div> 
             <div className="video_description">
                 <h4>Description:</h4>

@@ -616,15 +616,11 @@ body {
 }
 .flex-in-grid > h4{
   margin-top: 1rem;
-  color: #506D84;
+  color: #868686;
 }
-
-
-
-
 /*Grid vertical cards*/
 .grid-vertical-card {
-  
+
   margin: 2rem auto 1rem auto;
   grid-gap: 1rem;
   width: 80%;

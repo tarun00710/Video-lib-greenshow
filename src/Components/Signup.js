@@ -22,8 +22,8 @@ const SignUser = () => {
   const postData = async (e) => {
     e.preventDefault();
 
-    const res = await axios.post('http://localhost:5000/user',{ name, email, password, confirmpassword })
-    console.log(res) 
+    const res = await axios.post('https://green-play-library.herokuapp.com/user',{ name, email, password, confirmpassword })
+    
 
     if (res.status === 422 || !res.data) {
       window.alert("Invalid registration");
@@ -41,7 +41,7 @@ const SignUser = () => {
     <>
       <form class="form" method="#">
         <div class="form-header">
-          <h1>SignUp User</h1>
+          <h1>SignUp</h1>
         </div>
         <div class="form-input">
           <label>Enter Name</label>

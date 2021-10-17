@@ -15,23 +15,23 @@ import PrivateRoute from './Auth/PrivateRoute';
 
 
 function App() {
-  const [sidebar,setSidebar] =useState(false);
+  const [sidebar,setSidebar] = useState(false);
   const handleSidebar = () => setSidebar((sidebar) => !sidebar);
   return (
     <>
     <div className="App">
-    <Nav  handleSidebar ={ handleSidebar }/>
-    <Sidebar sidebar={sidebar} handleSidebar={handleSidebar}/>
-    <Routes>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/category/:category" element={<VideoCategory/>}/>
-      <Route path="/signup" element={<Signup/>}/>
-      <Route path="/signin" element={<Signin/>}/>
-      <Route path="/video/:v_id" element={<Videoplay/>}/>
-      <PrivateRoute path="/likedvideos" element={<Likedvideos/>}/>
-      <PrivateRoute path="/playlists" element={<Playlists/>}/>
-      <Route path="/playlists/:playlistName" element={<PlaylistVideos/>}/>
-    </Routes>
+      <Nav  handleSidebar ={ handleSidebar }/>
+      <Sidebar sidebar={sidebar} handleSidebar={handleSidebar}/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/category/:category" element={<VideoCategory/>}/>
+        <Route path="/signup" element={<Signup/>}/>
+        <Route path="/signin" element={<Signin/>}/>
+        <Route path="/video/:v_id" element={<Videoplay/>}/>
+        <PrivateRoute path="/likedvideos" element={<Likedvideos/>}/>
+        <PrivateRoute path="/playlists" element={<Playlists/>}/>
+        <Route path="/playlists/:playlistName" element={<PlaylistVideos/>}/>
+      </Routes>
     </div>
   </>
     );
