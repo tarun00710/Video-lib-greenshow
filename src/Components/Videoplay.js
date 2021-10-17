@@ -27,7 +27,7 @@ const Videoplay = () => {
             <div className="video_section">
                 <ReactPlayer controls width="100%" height="100%" url={videoURL} />
             </div>
-            <div class="videotitle">
+            <div class="video_title">
                {title}
             </div>
             <div className="video_detail">
@@ -40,10 +40,10 @@ const Videoplay = () => {
                 <small><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{likes}</small>
                 <small><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>{dislikes}</small>
                 <small onClick={() => loggedIn ? addToLikedVideo(findVideo,dispatch,userData) : navigate("/signin") }> Add to Liked Video <i class="fa fa-heart-o" aria-hidden="true"></i></small>
-                {loggedIn ? <PlaylistModal  videoInfo={findVideo}/> : navigate("/signin")} <i class="fa fa-play-circle" aria-hidden="true"></i>
+                {loggedIn ? <PlaylistModal  videoInfo={findVideo}/> : <button onClick={() => navigate("/signin")} className="btn btn-success">Add to playlist</button>}
             </div> 
             <div className="video_description">
-                <h4>Description:</h4>
+                <p>Description:</p>
                     {description}
             </div>
            
