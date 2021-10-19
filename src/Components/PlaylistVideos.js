@@ -11,17 +11,21 @@ const PlaylistVideos = () => {
     const {state,dispatch} = usePlayLikeContext()
     const {addToPlaylist} = state
     const {playlistName} = useParams();
-    // const {userData} = useSignIn()
+    
     const {userData} = useContext(SignInContext)
 
     const playlistInfo=addToPlaylist?.find((item) => item.playlistName === playlistName)
 
-
     const {playlistVideos} = playlistInfo
+   
+    console.log("I am playlistInfo",playlistInfo)
+
+  
 
     
     return (
-        <> 
+        !playlistVideos ? <div>loading...</div>  : 
+        <>
             { playlistVideos?.map((video) => {
                 const {_id,title,v_id,channel,subscriber,views,postedOn,duration}=video
             return(

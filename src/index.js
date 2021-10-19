@@ -11,13 +11,13 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
     <SignInContextProv>
-    <VideoContext>
-          <CategoryFunction>
-            <PlaylistLikeContextFunc>
-              <App />
-            </PlaylistLikeContextFunc>
-          </CategoryFunction> 
-    </VideoContext>
+      <VideoContext>
+            <CategoryFunction>
+              <PlaylistLikeContextFunc>
+                <App />
+              </PlaylistLikeContextFunc>
+            </CategoryFunction> 
+      </VideoContext>
     </SignInContextProv>
     </Router>
   </React.StrictMode>,

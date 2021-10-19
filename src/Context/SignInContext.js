@@ -12,15 +12,19 @@ const {state} = useLocation();
 const navigate = useNavigate();
 
 
-const login = async(e,email, password,setUserCheck) =>{
 
+const login = async(e,email, password,setUserCheck) =>{
     try {
         e.preventDefault();
        
-        const response =await axios.post('https://green-play-library.herokuapp.com/user/login',{email,password})
+        const response =await axios.post('https://green-play-library.herokuapp.com/user/login',{email,password})  
       
         if(response.status === 200){
             setUserData(response.data.users)
+            localStorage.setItem("userData", JSON.stringify(response.data.users));
+            localStorage.setItem("email",email)
+            localStorage.setItem("password",password)
+            localStorage.setItem("token" , response.data.users._id)
         }
         if(response.status === 422 || !userData){
             alert('Invalid login')
@@ -38,7 +42,7 @@ const login = async(e,email, password,setUserCheck) =>{
 
 
     return (
-        <SignInContext.Provider value={{loggedIn , login , userData}}>
+        <SignInContext.Provider value={{loggedIn:localStorage.getItem('token') , login , userData,setUserData,setLoggedIn}}>
             {children}
         </SignInContext.Provider>
     )

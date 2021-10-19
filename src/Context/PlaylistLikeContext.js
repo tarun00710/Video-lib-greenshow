@@ -35,14 +35,12 @@ const Addtofavorite=(state,action)=>{
         }
 
         case "REMOVE_FROM_PLAYLIST" : {
-
           
             const { playlistName , _id } = action.payload;
            
             return {...state,addToPlaylist:state.addToPlaylist.map((ele) => { 
 
                 if (ele.playlistName === playlistName){
-                    console.log(ele,"hello")
                    return {
                       ...ele,
                       playlistVideos:ele.playlistVideos.filter((video) => video._id !== _id)
@@ -67,22 +65,26 @@ const Addtofavorite=(state,action)=>{
     }
 }
 
-// {...state,addToPlaylist:[...state.addToPlaylist,...state.addToPlaylist.find((playlist)=>playlist.playlistName===playlistValue).playlistVideos.concat(videoInfo)]}
 
-const PlaylistLikeContextFunc=({children}) => {
+const PlaylistLikeContextFunc = ({children}) => {
 
     const [state,dispatch] =useReducer(Addtofavorite,{
-        addToLikedVideos : [],
-        addToPlaylist : [{playlistName : null,playlistVideos : []}]
+        addToLikedVideos : null,
+        addToPlaylist : [{playlistName : null,playlistVideos : null}]
     })
 
-    const { userData } = useContext(SignInContext)
+    // const {setUserData,setLoggedIn} = useContext(SignInContext)
 
-    useEffect(() => {
-        dispatch({ type: "USER_DEFAULT_DATA" , payload: userData });
-    },[userData])
+    // useEffect(() => {
+    //     const loggedInUser = localStorage.getItem("userData");
+    //     if(loggedInUser){
+    //         const foundUser = JSON.parse(loggedInUser)
+    //         setLoggedIn(true);
+    //         setUserData(foundUser)
+    //     }
+    // } , [])
 
-    console.log(state.addToLikedVideos,"liked videos")
+    console.log(state)
 
     return(
         <PlaylistContext.Provider value={{state,dispatch}}>
@@ -92,7 +94,7 @@ const PlaylistLikeContextFunc=({children}) => {
        
 }
 
-export const usePlayLikeContext=()=>{
+export const usePlayLikeContext = () => {
     return useContext(PlaylistContext)
 }
 
