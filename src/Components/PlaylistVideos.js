@@ -1,10 +1,10 @@
-import React,{useContext, useEffect} from 'react';
+import React,{useContext} from 'react';
 import ReactPlayer from 'react-player';
 import { useParams } from 'react-router-dom';
 import {usePlayLikeContext} from "../Context/PlaylistLikeContext";
 import {removeVideoFromPlaylist} from "./Predispatch"
 import { SignInContext} from '../Context/SignInContext';
-import axios from 'axios';
+
 
 
 const PlaylistVideos = () => {
