@@ -12,22 +12,22 @@ import {Routes, Route} from "react-router-dom"
 import VideoCategory from './Components/VideoCategory';
 import Sidebar from './Components/Sidebar';
 import PrivateRoute from './Auth/PrivateRoute';
-// import { SignInContext } from './Context/SignInContext';
 import { usePlayLikeContext } from './Context/PlaylistLikeContext';
 import axios from 'axios';
 
 
 function App() {
+
   const [sidebar,setSidebar] = useState(false);
   const handleSidebar = () => setSidebar((sidebar) => !sidebar);
 
-  // const { userData } = useContext(SignInContext)
-  const {dispatch } =  usePlayLikeContext()
-console.log("app line 26")
+  const {state,dispatch } =  usePlayLikeContext()
+
   useEffect(() => 
-  { 
-    console.log("app line 29")
-    const FetchedData= async()=>{
+  {  
+
+    const FetchedData= async() => {
+
     const response =await axios.post('https://green-play-library.herokuapp.com/user/login',{email:localStorage.getItem('email'),password:localStorage.getItem('password')})
     dispatch({ type: "USER_DEFAULT_DATA" , payload: response.data.users});
     }
@@ -35,8 +35,6 @@ console.log("app line 26")
       FetchedData()
     } 
   },[]);
-
-
 
   return (
     <>

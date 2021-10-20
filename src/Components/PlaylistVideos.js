@@ -1,9 +1,10 @@
-import React,{useContext} from 'react';
+import React,{useContext, useEffect} from 'react';
 import ReactPlayer from 'react-player';
 import { useParams } from 'react-router-dom';
 import {usePlayLikeContext} from "../Context/PlaylistLikeContext";
 import {removeVideoFromPlaylist} from "./Predispatch"
 import { SignInContext} from '../Context/SignInContext';
+import axios from 'axios';
 
 
 const PlaylistVideos = () => {
@@ -12,21 +13,15 @@ const PlaylistVideos = () => {
     const {addToPlaylist} = state
     const {playlistName} = useParams();
     
+    console.log(state,"state")
     const {userData} = useContext(SignInContext)
 
     const playlistInfo=addToPlaylist?.find((item) => item.playlistName === playlistName)
 
-    const {playlistVideos} = playlistInfo
-   
-    console.log("I am playlistInfo",playlistInfo)
-
-  
-
-    
     return (
-        !playlistVideos ? <div>loading...</div>  : 
+        !playlistInfo?.playlistVideos ? <div>loading...</div>  : 
         <>
-            { playlistVideos?.map((video) => {
+            { playlistInfo?.playlistVideos?.map((video) => {
                 const {_id,title,v_id,channel,subscriber,views,postedOn,duration}=video
             return(
                 <div className="playlist-video">
