@@ -7,8 +7,7 @@ import PlaylistModal from './PlaylistModal';
 const Likedvideos=()=>{
 
     const {state,dispatch}=usePlayLikeContext();
-    const {userData} = useContext(SignInContext)
-                  
+    const {userData} = useContext(SignInContext)            
     return (
 
       !state.addToLikedVideos? <div>loading...</div>  : 
@@ -17,7 +16,7 @@ const Likedvideos=()=>{
       <h3 className="playlist-title">Your Favourite Videos:</h3>
       {state?.addToLikedVideos.map((video) => {
           const {avatar,title,views,duration,channel,_id}=video;
-
+          console.log(video)
         return (
           <>
             <div id={_id} class="horizontal-card card-dismiss">
@@ -36,7 +35,7 @@ const Likedvideos=()=>{
                 </div>
                 <div class="card-button-option">
             
-                    <PlaylistModal videoInfo={_id}/>
+                    <PlaylistModal videoInfo={video}/>
       
                 </div>
               </div>

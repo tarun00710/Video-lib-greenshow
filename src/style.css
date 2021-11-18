@@ -815,7 +815,7 @@ small{
   margin:1rem;
 }
 .playlist-item{
-  width: 50%;
+  width: 65%;
   background-color: #a8f0c6;
   padding: 0.7rem;
   border-radius: 4px;
@@ -872,3 +872,4 @@ small{
   background-color: #fff;
   font-size: 18px
 }
+/* styling css */

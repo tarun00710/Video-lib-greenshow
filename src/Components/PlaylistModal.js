@@ -13,7 +13,7 @@ const PlaylistModal=({videoInfo}) =>{
     const {state,dispatch}=usePlayLikeContext()
     const {addToPlaylist}=state;
     const {userData} = useContext(SignInContext)
-  
+   
     return(
       <Popup
         trigger={<button className="btn btn-success">Add to Playlist</button>}
@@ -28,9 +28,9 @@ const PlaylistModal=({videoInfo}) =>{
             <div className="header"> List of Playlists: </div>
               <div className="content">
                
-                {
+                { 
                   addToPlaylist?.map((playlist) =>
-                  
+                 
                   playlist.playlistName !== null ?  
 
                   <div className="playlist-name" onClick={() => addToExistingPlaylist(userData,playlist,videoInfo,dispatch)}>{playlist.playlistName}

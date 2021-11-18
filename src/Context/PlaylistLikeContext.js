@@ -4,7 +4,7 @@ import {SignInContext} from '../Context/SignInContext'
 const PlaylistContext=createContext();
 
 const Addtofavorite=(state,action)=>{
-
+    console.log(action)
     switch(action.type){
 
         case "ADD_TO_LIKE" :
@@ -20,7 +20,7 @@ const Addtofavorite=(state,action)=>{
         case "ADD_TO_EXISTING_PLAYLIST":
             { 
             const {playlist,videoInfo}=action.payload
-
+            console.log(playlist,videoInfo)    
             return {...state,addToPlaylist:state.addToPlaylist.map((ele) => { 
 
                 if (ele.playlistName === playlist.playlistName){
@@ -58,6 +58,7 @@ const Addtofavorite=(state,action)=>{
         }   
 
         case "USER_DEFAULT_DATA" : {
+            console.log("User default data",action.payload)
             return {...state,addToLikedVideos : action.payload.likedvideos , addToPlaylist: action.payload.playlists }
         }
         default:
@@ -73,16 +74,11 @@ const PlaylistLikeContextFunc = ({children}) => {
         addToPlaylist : [{playlistName : null,playlistVideos : null}]
     })
 
-    // const {setUserData,setLoggedIn} = useContext(SignInContext)
+    const {userData,setUserData} = useContext(SignInContext)
 
-    // useEffect(() => {
-    //     const loggedInUser = localStorage.getItem("userData");
-    //     if(loggedInUser){
-    //         const foundUser = JSON.parse(loggedInUser)
-    //         setLoggedIn(true);
-    //         setUserData(foundUser)
-    //     }
-    // } , [])
+    useEffect(() => {
+        dispatch({ type: "USER_DEFAULT_DATA" , payload: userData})
+    } , [userData])
 
     console.log(state)
 

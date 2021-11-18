@@ -15,7 +15,7 @@ const Videoplay = () => {
     const navigate = useNavigate();
     const {VideoDB} = useContext(VideoDBContext);    
     const {dispatch} = usePlayLikeContext();
-    const {userData , loggedIn} = useContext(SignInContext);
+    const {userData , token} = useContext(SignInContext);
     
 
     const findVideo =  VideoDB.find((product) => product.v_id === v_id)
@@ -39,8 +39,8 @@ const Videoplay = () => {
             <div className="video_detail">
                 <small><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{likes}</small>
                 <small><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>{dislikes}</small>
-                <small onClick={() => loggedIn ? addToLikedVideo(findVideo,dispatch,userData) : navigate("/signin") }> Add to Liked Video <i class="fa fa-heart-o" aria-hidden="true"></i></small>
-                {loggedIn ? <PlaylistModal  videoInfo={findVideo}/> : <button onClick={() => navigate("/signin")} className="btn btn-success">Add to playlist</button>}
+                <small onClick={() => token ? addToLikedVideo(findVideo,dispatch,userData) : navigate("/signin") }> Add to Liked Video <i class="fa fa-heart-o" aria-hidden="true"></i></small>
+                {token ? <PlaylistModal  videoInfo={findVideo}/> : <button onClick={() => navigate("/signin")} className="btn btn-success">Add to playlist</button>}
             </div> 
             <div className="video_description">
                 <p>Description:</p>

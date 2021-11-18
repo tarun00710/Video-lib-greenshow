@@ -13,6 +13,8 @@ import VideoCategory from './Components/VideoCategory';
 import Sidebar from './Components/Sidebar';
 import PrivateRoute from './Auth/PrivateRoute';
 import { usePlayLikeContext } from './Context/PlaylistLikeContext';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 
@@ -21,25 +23,29 @@ function App() {
   const [sidebar,setSidebar] = useState(false);
   const handleSidebar = () => setSidebar((sidebar) => !sidebar);
 
-  const {state,dispatch } =  usePlayLikeContext()
+  const {dispatch } =  usePlayLikeContext()
 
   useEffect(() => 
   {  
-
+    //https://green-play-library.herokuapp.com/user/login
     const FetchedData= async() => {
-
-    const response =await axios.post('https://green-play-library.herokuapp.com/user/login',{email:localStorage.getItem('email'),password:localStorage.getItem('password')})
-    dispatch({ type: "USER_DEFAULT_DATA" , payload: response.data.users});
+    console.log(localStorage.getItem('token'))  
+    const response =await axios.get('https://green-play-library.herokuapp.com/user/userInfo',{ headers: {authorization:localStorage.getItem('token')}
+  }
+  )
+   console.log(response.data)
+    dispatch({ type: "USER_DEFAULT_DATA" , payload: response.data.getUser});
     }
-    if(localStorage.getItem('email')){
+    if(localStorage.getItem('token')){
       FetchedData()
     } 
-  },[]);
+  },[dispatch]);
 
   return (
     <>
     <div className="App">
       <Nav  handleSidebar ={ handleSidebar }/>
+      <ToastContainer />
       <Sidebar sidebar={sidebar} handleSidebar={handleSidebar}/>
       <Routes>
         <Route path="/" element={<Home/>}/>
