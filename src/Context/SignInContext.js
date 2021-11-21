@@ -19,7 +19,7 @@ const login = async(e,email, password,setUserCheck) =>{
         console.log(email,password)
         const response =await axios.post('https://green-play-library.herokuapp.com/user/login', {email,password})
         console.log(response);   
-//https://green-play-library.herokuapp.com/user/login
+
 
         if(response.status === 200){
             setToken(response.data.token)
@@ -27,7 +27,7 @@ const login = async(e,email, password,setUserCheck) =>{
             localStorage.setItem("userData", JSON.stringify(response.data.decoded.userData));
             localStorage.setItem("email",email)
             localStorage.setItem("password",password)
-            localStorage.setItem("token" , response.data.token)
+            localStorage.setItem("token", response.data.token)
         }
         if(response.status === 400 || !userData){
             alert('Invalid login')
