@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from "react-router-dom";
+import { SignInContext } from '../Context/SignInContext';
 const Sidebar = ({ sidebar, handleSidebar }) => {
+
+const { token,logoutHandler} = useContext(SignInContext);
+
+
   return (
     <>
       <nav
@@ -10,9 +15,9 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
         <i className="fa fa-times" aria-hidden="true"></i>
         <ul className="nav-list sidebarMenu">
           <li className="nav-menu-items">
-            <NavLink className="navstyle" to="/signup" >
-              SignUp/LogIn<i class="fa fa-user" aria-hidden="true"></i>
-            </NavLink>
+            {token ? <p onClick={()=> logoutHandler()} className="navstyle">Logout</p> : <NavLink className="navstyle" to="/signup" >
+            SignUp/LogIn<i class="fa fa-user" aria-hidden="true"></i>
+          </NavLink> }
             <hr />
           </li>
 

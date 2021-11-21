@@ -22,7 +22,6 @@ const login = async(e,email, password,setUserCheck) =>{
             setToken(response.data.token)
             setUserData(response.data.decoded.userData)
             localStorage.setItem("userData", JSON.stringify(response.data.decoded.userData));
-            localStorage.setItem("email",email)
             localStorage.setItem("token", response.data.token)
         }
         if(response.status === 400 || !userData){
@@ -38,8 +37,14 @@ const login = async(e,email, password,setUserCheck) =>{
     }
   
 }
+const logoutHandler = () => {
+    setToken(null)
+    localStorage.removeItem('token')
+    localStorage.removeItem('userData')
+    navigate('/signin')
+}
     return (
-        <SignInContext.Provider value={{token:localStorage.getItem('token'),login, userData,setUserData}}>
+        <SignInContext.Provider value={{token:localStorage.getItem('token'),login, userData,setUserData,logoutHandler}}>
             {children}
         </SignInContext.Provider>
     )
