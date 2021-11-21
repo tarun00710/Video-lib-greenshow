@@ -74,7 +74,7 @@ const PlaylistLikeContextFunc = ({children}) => {
         addToPlaylist : [{playlistName : null,playlistVideos : null}]
     })
 
-    const {userData,setUserData} = useContext(SignInContext)
+    const {userData} = useContext(SignInContext)
 
     useEffect(() => {
         dispatch({ type: "USER_DEFAULT_DATA" , payload: userData})
