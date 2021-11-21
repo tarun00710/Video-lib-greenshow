@@ -5,15 +5,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-.disable-selections{
-  user-select: none;
-}
-.disable-selections{
-  -webkit-touch-callout: none;
-}
 
 body {
   font-family: var(--font-style1);
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+   -ms-user-select: none;
+       user-select: none;
 }
 .App{
   margin-top:3.5rem;
