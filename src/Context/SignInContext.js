@@ -16,7 +16,8 @@ const navigate = useNavigate();
 const login = async(e,email, password,setUserCheck) =>{
     try {
         e.preventDefault()
-        const response =await axios.post('https://green-play-library.herokuapp.com/user/login', { email,password})
+        console.log(email,password)
+        const response =await axios.post('https://green-play-library.herokuapp.com/user/login', {email,password})
         console.log(response);   
 //https://green-play-library.herokuapp.com/user/login
 
@@ -36,7 +37,7 @@ const login = async(e,email, password,setUserCheck) =>{
         }    
     }
     catch(err){
-        console.log(err)
+      console.log(err)
       toast.error("Authentication failed")  
     }
   

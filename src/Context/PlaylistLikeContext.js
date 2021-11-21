@@ -80,8 +80,6 @@ const PlaylistLikeContextFunc = ({children}) => {
         dispatch({ type: "USER_DEFAULT_DATA" , payload: userData})
     } , [userData])
 
-    console.log(state)
-
     return(
         <PlaylistContext.Provider value={{state,dispatch}}>
             {children}
