@@ -4,7 +4,6 @@ import {SignInContext} from '../Context/SignInContext'
 const PlaylistContext=createContext();
 
 const Addtofavorite=(state,action)=>{
-    console.log(action)
     switch(action.type){
 
         case "ADD_TO_LIKE" :

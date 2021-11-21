@@ -29,7 +29,6 @@ function App() {
   {  
     //https://green-play-library.herokuapp.com/user/login
     const FetchedData= async() => {
-    console.log(localStorage.getItem('token'))  
     const response =await axios.get('https://green-play-library.herokuapp.com/user/userInfo',{ headers: {authorization:localStorage.getItem('token')}
   }
   )

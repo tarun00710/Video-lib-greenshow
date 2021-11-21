@@ -16,24 +16,23 @@ const Likedvideos=()=>{
       <h3 className="playlist-title">Your Favourite Videos:</h3>
       {state?.addToLikedVideos.map((video) => {
           const {avatar,title,views,duration,channel,_id}=video;
-          console.log(video)
         return (
           <>
-            <div id={_id} class="horizontal-card card-dismiss">
+            <div id={_id} className="horizontal-card card-dismiss">
               <div 
                 onClick={() => RemoveLikedVideoHandler(_id,dispatch,userData)}
               >
               <i className="fa fa-trash"></i>
               </div>
-              <img class="hcard-image" src={avatar} alt="img" />
-              <div class="card-info">
-                <div class="card-description">
+              <img className="hcard-image" src={avatar} alt="img" />
+              <div className="card-info">
+                <div className="card-description">
                   <h4 style={{ color: "#868686"}}>{title}</h4>
                   <p> {views} views</p>
                   <p> {duration} mins </p>
                   <p> {channel}</p>
                 </div>
-                <div class="card-button-option">
+                <div className="card-button-option">
             
                     <PlaylistModal videoInfo={video}/>
       
