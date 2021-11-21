@@ -18,7 +18,7 @@ const LogInUserfunc = () => {
     <>
       <form className="form" method="#">
         <div className="form-header">
-          <h1>Login</h1>
+          <h1 className="form-title">LogIn</h1>
         </div>
         <div className="form-input">
           <label>Enter email</label>

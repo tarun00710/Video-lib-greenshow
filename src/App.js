@@ -15,6 +15,7 @@ import PrivateRoute from './Auth/PrivateRoute';
 import { usePlayLikeContext } from './Context/PlaylistLikeContext';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from './Components/Footer';
 import axios from 'axios';
 
 
@@ -56,6 +57,7 @@ function App() {
         <PrivateRoute path="/playlists" element={<Playlists/>}/>
         <Route path="/playlists/:playlistName" element={<PlaylistVideos/>}/>
       </Routes>
+      <Footer/>
     </div>
   </>
     );
