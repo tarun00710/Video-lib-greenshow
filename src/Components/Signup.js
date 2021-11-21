@@ -27,10 +27,8 @@ const SignUser = () => {
 
     if (res.status === 422 || !res.data) {
       window.alert("Invalid registration");
-      console.log("Invalid registration");
     } else {
       window.alert("successful registration");
-      console.log("successful registration");
       setUser({ name: "", email: "", password: "", confirmpassword: "" });
     }
   };

@@ -11,9 +11,7 @@ useEffect(() =>{
     
     const getData = async() => {
         const response = await axios.get('https://green-play-library.herokuapp.com/category')
-        console.log(response)
         const videoData = await response.data;
-        console.log(videoData.Videos)
         setVideoDB(videoData.Videos)
     }
     getData()

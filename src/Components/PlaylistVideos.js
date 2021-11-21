@@ -13,7 +13,6 @@ const PlaylistVideos = () => {
     const {addToPlaylist} = state
     const {playlistName} = useParams();
     
-    console.log(state,"state")
     const {userData} = useContext(SignInContext)
 
     const playlistInfo=addToPlaylist?.find((item) => item.playlistName === playlistName)

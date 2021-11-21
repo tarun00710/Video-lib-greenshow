@@ -15,7 +15,6 @@ import PrivateRoute from './Auth/PrivateRoute';
 import { usePlayLikeContext } from './Context/PlaylistLikeContext';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from './Components/Footer';
 import axios from 'axios';
 
 
@@ -28,12 +27,11 @@ function App() {
 
   useEffect(() => 
   {  
-    //https://green-play-library.herokuapp.com/user/login
     const FetchedData= async() => {
     const response =await axios.get('https://green-play-library.herokuapp.com/user/userInfo',{ headers: {authorization:localStorage.getItem('token')}
   }
   )
-   console.log(response.data)
+
     dispatch({ type: "USER_DEFAULT_DATA" , payload: response.data.getUser});
     }
     if(localStorage.getItem('token')){
@@ -57,7 +55,6 @@ function App() {
         <PrivateRoute path="/playlists" element={<Playlists/>}/>
         <Route path="/playlists/:playlistName" element={<PlaylistVideos/>}/>
       </Routes>
-      <Footer/>
     </div>
   </>
     );

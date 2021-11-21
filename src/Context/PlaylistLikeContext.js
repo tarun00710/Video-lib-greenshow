@@ -57,7 +57,6 @@ const Addtofavorite=(state,action)=>{
         }   
 
         case "USER_DEFAULT_DATA" : {
-            console.log("User default data",action.payload)
             return {...state,addToLikedVideos : action.payload.likedvideos , addToPlaylist: action.payload.playlists }
         }
         default:

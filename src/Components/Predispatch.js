@@ -5,7 +5,6 @@ export const RemoveLikedVideoHandler = async(_id,dispatch,userData) => {
 
     try{
         const response = await axios.delete(`https://green-play-library.herokuapp.com/user/${userData._id}/liked/${_id}`)
-        console.log(response)
         if(response.status === 200 ){
             dispatch({ type: "REMOVE_LIKED", payload:_id })
             toast.success("Successfully removed Video")
@@ -53,11 +52,9 @@ export const addPlaylist = async(videoInfo,playlistValue, userData , dispatch) =
 
 export const addToExistingPlaylist = async(userData,playlist,videoInfo,dispatch) => {
     try{
-        console.log(videoInfo)
         const response = await axios.post(`https://green-play-library.herokuapp.com/user/${userData._id}/playlist/${playlist.playlistName}/video/${videoInfo._id}`)
 
         if(response.status === 200){
-            console.log("dispatching")
             dispatch({type : "ADD_TO_EXISTING_PLAYLIST",payload : {playlist,videoInfo}})
             toast(`Added to ${playlist.playlistName}`)
         }
@@ -71,7 +68,6 @@ export const addToExistingPlaylist = async(userData,playlist,videoInfo,dispatch)
 export const removePlaylist = async(userData , dispatch , playlistName)  => {
     try{
         const response = await axios.delete(`https://green-play-library.herokuapp.com/user/${userData._id}/playlist/${playlistName}`)
-        console.log(response.status)
         if(response.status === 200) {
             dispatch({type : "REMOVE_PLAYLIST" , payload : {playlistName}})
             toast.dark("Removed"+playlistName)
@@ -88,9 +84,8 @@ export const removePlaylist = async(userData , dispatch , playlistName)  => {
 
 export const removeVideoFromPlaylist = async( userData, playlistName,_id,dispatch) => {
     try{
-        console.log("video id",_id)
+  
         const response = await axios.delete(`https://green-play-library.herokuapp.com/user/${userData._id}/playlist/${playlistName}/video/${_id}`)
-        console.log(response)
         if(response.status === 200){
             dispatch({type:"REMOVE_FROM_PLAYLIST",payload:{playlistName,_id}})
             toast.success("Removed the video from "+playlistName)

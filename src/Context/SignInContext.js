@@ -32,7 +32,6 @@ const login = async(e,email, password,setUserCheck) =>{
         }    
     }
     catch(err){
-      console.log(err)
       toast.error("Authentication failed")  
     }
   

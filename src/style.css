@@ -8,6 +8,9 @@
 body {
   font-family: var(--font-style1);
 }
+.App{
+  margin-top:3.5rem;
+}
 
 .information {
   display: flex;
@@ -752,7 +755,11 @@ hr {
   height:50vh;
   margin-bottom: 0.8rem;
 }
-
+@media (min-width: 520px) and (max-width:820px){
+  .App{
+    margin-top:5rem;
+  }
+}
 @media (max-width: 520px) {
   .nav > .nav-list {
     display: none;
