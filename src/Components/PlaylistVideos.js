@@ -15,7 +15,7 @@ const PlaylistVideos = () => {
     
     const {userData} = useContext(SignInContext)
 
-    const playlistInfo=addToPlaylist?.find((item) => item.playlistName === playlistName)
+    const playlistInfo = addToPlaylist?.find((item) => item.playlistName === playlistName)
 
     return (
         !playlistInfo?.playlistVideos ? <div>loading...</div>  : 
@@ -32,7 +32,7 @@ const PlaylistVideos = () => {
                         {title}
                     </div>
                     <div className="playlist-video_detail">
-                        <small>{channel} {subscriber}-subscribers</small>
+                        <small>{channel} {subscriber} -subscribers</small>
                         <small>{views} <i class="fa fa-eye" aria-hidden="true"></i></small>
                         <small><i class="fa fa-calendar-o" aria-hidden="true"></i> {postedOn}</small>
                         <small><i class="fa fa-clock-o" aria-hidden="true"></i>{duration}</small> 
